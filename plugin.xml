@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin
+        id="cordova-plugin-mytarget-ads"
+        version="0.0.1"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <name>cordova-plugin-mytarget-ads</name>
+    <description>Cordova plugin for MyTarget ads</description>
+    <js-module src="www/mytargetads.js" name="MyTargetAds">
+        <clobbers target="MyTargetAds" />
+    </js-module>
+
+    <engines>
+        <engine name="cordova" version=">=3.0" />
+        <engine name="cordova-android" version=">=4.0.0" />
+        <engine name="cordova-ios" version=">=4.0.0" />
+    </engines>
+
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MyTargetAdsPlugin">
+                <param name="android-package" value="io.luzh.cordova.plugin.MyTargetAdsPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="com.google.android.gms.version"
+                       android:value="@integer/google_play_services_version" />
+
+            <activity android:name="com.my.target.common.MyTargetActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        </config-file>
+
+        <source-file src="src/android/MyTargetAdsPlugin.java"
+                     target-dir="src/io/luzh/cordova/plugin" />
+        <framework src="src/android/mytargetads.gradle" custom="true" type="gradleReference" />
+
+        <framework src="com.android.support:support-v4:+" />
+        <framework src="com.android.support:recyclerview-v7:27.1.1" />
+
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MyTargetAdsPlugin">
+                <param name="ios-package" value="MyTargetAdsPlugin" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/MyTargetAdsPlugin.h" />
+        <source-file src="src/ios/MyTargetAdsPlugin.m" />
+
+        <framework src="myTargetSDK" type="podspec" spec="~> 5.15.1" />
+
+        <framework src="MyTargetSDK.framework" />
+        <framework src="Foundation.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="CoreMedia.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="StoreKit.framework" />
+        <framework src="AdSupport.framework" />
+        <framework src="SafariServices.framework" />
+        <framework src="AVFoundation.framework" />
+    </platform>
+</plugin>

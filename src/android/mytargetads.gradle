@@ -1,0 +1,7 @@
+cdvPluginPostBuildExtras.add({
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+        implementation 'com.my.target:mytarget-sdk:5.15.0'
+    }
+});

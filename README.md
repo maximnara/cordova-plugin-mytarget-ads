@@ -1,4 +1,8 @@
-# MyTarget Ads for Cordova apps
+# MyTarget Ads for Ionic and Cordova apps
+
+### Interstitial and Rewarded ads are available now!
+
+## [Demo video](https://drive.google.com/file/d/1FEbdX-voNsW_51o2mBjdP5z5ce_Zvbh4/view?usp=sharing)
 
 --------
 
